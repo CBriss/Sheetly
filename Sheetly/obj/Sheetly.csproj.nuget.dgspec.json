@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Chris\\source\\repos\\Sheetly\\Sheetly\\Sheetly.csproj": {}
+    "E:\\sheetly\\Sheetly\\Sheetly.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Chris\\source\\repos\\Sheetly\\Sheetly\\Sheetly.csproj": {
+    "E:\\sheetly\\Sheetly\\Sheetly.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chris\\source\\repos\\Sheetly\\Sheetly\\Sheetly.csproj",
+        "projectUniqueName": "E:\\sheetly\\Sheetly\\Sheetly.csproj",
         "projectName": "Sheetly",
-        "projectPath": "C:\\Users\\Chris\\source\\repos\\Sheetly\\Sheetly\\Sheetly.csproj",
+        "projectPath": "E:\\sheetly\\Sheetly\\Sheetly.csproj",
         "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chris\\source\\repos\\Sheetly\\Sheetly\\obj\\",
+        "outputPath": "E:\\sheetly\\Sheetly\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Chris\\AppData\\Roaming\\NuGet\\NuGet.Config",

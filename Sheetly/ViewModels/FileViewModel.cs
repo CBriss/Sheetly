@@ -7,7 +7,11 @@ namespace Sheetly.ViewModels
 {
     class FileViewModel : BaseViewModel
     {
-        private ObservableCollection<File> _fileList = new ObservableCollection<File>();
+        public ObservableCollection<File> _fileList;
+        public FileViewModel() {
+            _fileList = new ObservableCollection<File>();
+        }
+
         public ObservableCollection<File> FileList
         {
             get { return _fileList; }

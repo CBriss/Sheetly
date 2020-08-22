@@ -35,6 +35,11 @@ namespace Sheetly
             set { filePath = value; OnPropertyChange(filePath); }
         }
 
+        public string FileName
+        {
+            get { return filePath.Split('/')[filePath.Split('/').Length-1]; }
+        }
+
         private SpreadsheetExtensions extension;
         public SpreadsheetExtensions Extension
         {

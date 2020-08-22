@@ -12,12 +12,15 @@ namespace Sheetly
     /// </summary>
     public partial class MainMenu : Page
     {
-        FileViewModel fileViewModel = new FileViewModel();
+        FileViewModel fileViewModel;
 
         public MainMenu()
         {
+            fileViewModel = new FileViewModel();
+
             // The DataContext serves as the starting point of Binding Paths
             DataContext = fileViewModel;
+
             InitializeComponent();
         }
 
