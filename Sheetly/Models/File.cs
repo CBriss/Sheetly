@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.FileIO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+
+// Note: EPPlus used, which has a small fee for commercial use
 
 namespace Sheetly
 {
@@ -53,10 +56,18 @@ namespace Sheetly
             get { return rows;  }
             set { rows = value; }
         }
+
         private string name;
         public string Name {
             get { return name; }
             set { name = value; } 
+        }
+
+        private string delimiter;
+        public string Delimiter
+        {
+            get { return delimiter; }
+            set { delimiter = value; }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -64,6 +75,60 @@ namespace Sheetly
         protected void OnPropertyChange(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void ReadRows()
+        {
+            switch (extension)
+            {
+                case SpreadsheetExtensions.csv:
+                    Console.WriteLine("csv");
+                    ReadCSV();
+                    break;
+                case SpreadsheetExtensions.txt:
+                    Console.WriteLine("txt");
+                    ReadCSV();
+                    break;
+                case SpreadsheetExtensions.xls:
+                    // if single sheet, can we use csv?
+                    Console.WriteLine("xls");
+                    break;
+                case SpreadsheetExtensions.xlsx:
+                    Console.WriteLine("xlsx");
+                    break;
+                case SpreadsheetExtensions.numbers:
+                    Console.WriteLine("numbers");
+                    break;
+                case SpreadsheetExtensions.ods:
+                    Console.WriteLine("ods");
+                    ReadOds();
+                    break;
+                case SpreadsheetExtensions.ots:
+                    Console.WriteLine("ots");
+                    ReadOds();
+                    break;
+            }
+        }
+
+        protected void ReadCSV()
+        {
+            // If quotes, add the following line
+            // TextFieldParser.HasFieldsEnclosedInQuotes = true;
+            using (TextFieldParser parser = new TextFieldParser(filePath))
+            {
+                parser.SetDelimiters(delimiter);
+                while (!parser.EndOfData)
+                {
+                    //Processing row
+                    string[] fields = parser.ReadFields();
+                    rows.Add(fields);
+                }
+            }
+        }
+
+        public int RowCount()
+        {
+            return rows.Count;
         }
     }
 }
