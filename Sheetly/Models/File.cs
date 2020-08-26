@@ -110,22 +110,6 @@ namespace Sheetly
             }
         }
 
-        protected void ReadCSV()
-        {
-            // If quotes, add the following line
-            // TextFieldParser.HasFieldsEnclosedInQuotes = true;
-            using (TextFieldParser parser = new TextFieldParser(filePath))
-            {
-                parser.SetDelimiters(delimiter);
-                while (!parser.EndOfData)
-                {
-                    //Processing row
-                    string[] fields = parser.ReadFields();
-                    rows.Add(fields);
-                }
-            }
-        }
-
         public int RowCount()
         {
             return rows.Count;

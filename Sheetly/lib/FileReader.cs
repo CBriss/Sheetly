@@ -7,11 +7,28 @@ using System.Xml.Linq;
 using System.Linq;
 using System.Text;
 using System.IO;
+using Microsoft.VisualBasic.FileIO;
 
 namespace Sheetly.lib
 {
     class FileReader
     {
+
+        protected void ReadCSV(string filePath, string delimiter)
+        {
+            // If quotes, add the following line
+            // TextFieldParser.HasFieldsEnclosedInQuotes = true;
+            using (TextFieldParser parser = new TextFieldParser(filePath))
+            {
+                parser.SetDelimiters(delimiter);
+                while (!parser.EndOfData)
+                {
+                    //Processing row
+                    string[] fields = parser.ReadFields();
+                    //rows.Add(fields);
+                }
+            }
+        }
         protected void ReadExcel(string filePath)
         {
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
