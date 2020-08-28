@@ -5,17 +5,17 @@ using AODL.Document.TextDocuments;
 using AODL.Document.Content;
 using System.Xml.Linq;
 using System.Linq;
-using System.Text;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
+using System.Collections.Generic;
 
 namespace Sheetly.lib
 {
     class FileReader
     {
-
-        protected void ReadCSV(string filePath, string delimiter)
+        public static List<Array> ReadCSV(string filePath, string delimiter)
         {
+            List<Array> rows = new List<Array>();
             // If quotes, add the following line
             // TextFieldParser.HasFieldsEnclosedInQuotes = true;
             using (TextFieldParser parser = new TextFieldParser(filePath))
@@ -25,32 +25,37 @@ namespace Sheetly.lib
                 {
                     //Processing row
                     string[] fields = parser.ReadFields();
-                    //rows.Add(fields);
+                    rows.Add(fields);
                 }
             }
+            return rows;
         }
-        protected void ReadExcel(string filePath)
+        public static List<Array> ReadExcel(string filePath)
         {
+            List<Array> rows = new List<Array>();
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
 
             using (var package = new ExcelPackage(new FileInfo(filePath)))
             {
-                // NOTE: Below is example code
-
-                //Get the first worksheet in the workbook
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
-
-                int col = 2; //Column 2 is the item description
-                for (int row = 2; row < 5; row++)
-                    Console.WriteLine("\tCell({0},{1}).Value={2}", row, col, worksheet.Cells[row, col].Value);
-
-                //Output the formula from row 3 in A1 and R1C1 format
-                Console.WriteLine("\tCell({0},{1}).Formula={2}", 3, 5, worksheet.Cells[3, 5].Formula);
-                Console.WriteLine("\tCell({0},{1}).FormulaR1C1={2}", 3, 5, worksheet.Cells[3, 5].FormulaR1C1);
+                
+                var start = worksheet.Dimension.Start;
+                var end = worksheet.Dimension.End;
+                string[] row = new string[end.Column + 1];
+                for (int rowNum = start.Row; rowNum <= end.Row; rowNum++)
+                {
+                    Array.Clear(row, 0, row.Length);
+                    for (int col = start.Column; col <= end.Column; col++)
+                    {
+                        row[col] = worksheet.Cells[rowNum, col].Text;
+                    }
+                    rows.Add(row);
+                }
             }
+            return rows;
         }
 
-        public void ReadOds(string filePath)
+        public static void ReadOds(string filePath)
         {
             // NOTE: Below is example code
 
@@ -74,7 +79,7 @@ namespace Sheetly.lib
             }
         }
 
-        public void ReadNumbers(string filePath)
+        public static void ReadNumbers(string filePath)
         {
             // TODO
         }

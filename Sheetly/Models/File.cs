@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualBasic.FileIO;
+﻿using Sheetly.lib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +30,9 @@ namespace Sheetly
             this.filePath = filePath;
             // Determine file type
             extension = (SpreadsheetExtensions)Enum.Parse(typeof(SpreadsheetExtensions), fileExtension);
+
+            delimiter = ",";
+            ReadRows();
         }
 
         private string filePath;
@@ -55,6 +58,13 @@ namespace Sheetly
         {
             get { return rows;  }
             set { rows = value; }
+        }
+
+        private int rowCount;
+        public int RowCount
+        {
+            get { return rowCount; }
+            set { rowCount = value; }
         }
 
         private string name;
@@ -83,17 +93,22 @@ namespace Sheetly
             {
                 case SpreadsheetExtensions.csv:
                     Console.WriteLine("csv");
-                    ReadCSV();
+                    rows = FileReader.ReadCSV(filePath, delimiter);
+                    rowCount = rows.Count;
                     break;
                 case SpreadsheetExtensions.txt:
                     Console.WriteLine("txt");
-                    ReadCSV();
+                    rows = FileReader.ReadCSV(filePath, delimiter);
+                    rowCount = rows.Count;
                     break;
                 case SpreadsheetExtensions.xls:
-                    // if single sheet, can we use csv?
+                    rows = FileReader.ReadExcel(filePath);
+                    rowCount = rows.Count;
                     Console.WriteLine("xls");
                     break;
                 case SpreadsheetExtensions.xlsx:
+                    rows = FileReader.ReadExcel(filePath);
+                    rowCount = rows.Count;
                     Console.WriteLine("xlsx");
                     break;
                 case SpreadsheetExtensions.numbers:
@@ -101,18 +116,13 @@ namespace Sheetly
                     break;
                 case SpreadsheetExtensions.ods:
                     Console.WriteLine("ods");
-                    ReadOds();
+                    FileReader.ReadOds(filePath);
                     break;
                 case SpreadsheetExtensions.ots:
                     Console.WriteLine("ots");
-                    ReadOds();
+                    FileReader.ReadOds(filePath);
                     break;
             }
-        }
-
-        public int RowCount()
-        {
-            return rows.Count;
         }
     }
 }
