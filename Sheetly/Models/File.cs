@@ -26,11 +26,8 @@ namespace Sheetly
                 throw new ArgumentException(String.Format("{0} is not a correct spreadsheet format", fileExtension));
             }
 
-            // Set File Path
             this.filePath = filePath;
-            // Determine file type
             extension = (SpreadsheetExtensions)Enum.Parse(typeof(SpreadsheetExtensions), fileExtension);
-
             delimiter = ",";
             ReadRows();
         }
@@ -43,7 +40,7 @@ namespace Sheetly
 
         public string FileName
         {
-            get { return filePath.Split('/')[filePath.Split('/').Length-1]; }
+            get { return filePath.Split('/')[^1]; }
         }
 
         private SpreadsheetExtensions extension;
@@ -65,6 +62,13 @@ namespace Sheetly
         {
             get { return rowCount; }
             set { rowCount = value; }
+        }
+
+        private List<String> headers;
+        public List<String> Headers
+        {
+            get { return headers; }
+            set { headers = value;  }
         }
 
         private string name;
@@ -94,21 +98,17 @@ namespace Sheetly
                 case SpreadsheetExtensions.csv:
                     Console.WriteLine("csv");
                     rows = FileReader.ReadCSV(filePath, delimiter);
-                    rowCount = rows.Count;
                     break;
                 case SpreadsheetExtensions.txt:
                     Console.WriteLine("txt");
                     rows = FileReader.ReadCSV(filePath, delimiter);
-                    rowCount = rows.Count;
                     break;
                 case SpreadsheetExtensions.xls:
                     rows = FileReader.ReadExcel(filePath);
-                    rowCount = rows.Count;
                     Console.WriteLine("xls");
                     break;
                 case SpreadsheetExtensions.xlsx:
                     rows = FileReader.ReadExcel(filePath);
-                    rowCount = rows.Count;
                     Console.WriteLine("xlsx");
                     break;
                 case SpreadsheetExtensions.numbers:
@@ -123,6 +123,8 @@ namespace Sheetly
                     FileReader.ReadOds(filePath);
                     break;
             }
+            rowCount = rows.Count;
+            headers = new List<string>((IEnumerable<string>)rows[0]);
         }
     }
 }
