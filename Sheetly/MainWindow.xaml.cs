@@ -10,7 +10,7 @@ namespace Sheetly
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : Page
+    public partial class MainMenu : Window
     {
         FileViewModel fileViewModel;
 

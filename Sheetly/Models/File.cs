@@ -50,8 +50,8 @@ namespace Sheetly
             set { extension = value; OnPropertyChange(extension.ToString()); }
         }
 
-        private List<Array> rows;
-        public List<Array> Rows
+        private List<List<string>> rows;
+        public List<List<string>> Rows
         {
             get { return rows;  }
             set { rows = value; }

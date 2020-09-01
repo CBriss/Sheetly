@@ -13,9 +13,9 @@ namespace Sheetly.lib
 {
     class FileReader
     {
-        public static List<Array> ReadCSV(string filePath, string delimiter)
+        public static List<List<string>> ReadCSV(string filePath, string delimiter)
         {
-            List<Array> rows = new List<Array>();
+            List<List<string>> rows = new List<List<string>>();
             // If quotes, add the following line
             // TextFieldParser.HasFieldsEnclosedInQuotes = true;
             using (TextFieldParser parser = new TextFieldParser(filePath))
@@ -24,15 +24,15 @@ namespace Sheetly.lib
                 while (!parser.EndOfData)
                 {
                     //Processing row
-                    string[] fields = parser.ReadFields();
+                    List<string> fields = parser.ReadFields().ToList<string>();
                     rows.Add(fields);
                 }
             }
             return rows;
         }
-        public static List<Array> ReadExcel(string filePath)
+        public static List<List<string>> ReadExcel(string filePath)
         {
-            List<Array> rows = new List<Array>();
+            List<List<string>> rows = new List<List<string>>();
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
 
             using (var package = new ExcelPackage(new FileInfo(filePath)))
@@ -41,10 +41,10 @@ namespace Sheetly.lib
                 
                 var start = worksheet.Dimension.Start;
                 var end = worksheet.Dimension.End;
-                string[] row = new string[end.Column + 1];
+                List<string> row = new List<string>();
                 for (int rowNum = start.Row; rowNum <= end.Row; rowNum++)
                 {
-                    Array.Clear(row, 0, row.Length);
+                    row.Clear();
                     for (int col = start.Column; col <= end.Column; col++)
                     {
                         row[col] = worksheet.Cells[rowNum, col].Text;
