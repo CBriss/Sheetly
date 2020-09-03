@@ -21,7 +21,7 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Row="1" Grid.Column="2" Content="Add New File" Click="UploadNewFile"  />
+        <Button Grid.Row="1" Grid.Column="2" Content="Add New File" Click="NewFileWindow"  />
 
         <ItemsControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Name="fileDisplay" ItemsSource="{Binding FileList}">
             <ItemsControl.ItemTemplate>

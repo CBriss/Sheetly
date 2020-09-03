@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
+    <PackageReference Include="AODL" Version="1.2.0.1" />
+    <PackageReference Include="EPPlus" Version="5.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AODL" Version="1.2.0.1" />
-    <PackageReference Include="EPPlus" Version="5.3.0" />
+    <Folder Include="Views\" />
   </ItemGroup>
 
 </Project>

@@ -24,13 +24,10 @@ namespace Sheetly
             InitializeComponent();
         }
 
-        private void UploadNewFile(object sender, RoutedEventArgs e)
+        private void NewFileWindow(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            if (fileDialog.ShowDialog() == true)
-            {
-                fileViewModel.AddFile(fileDialog.FileName);
-            }
+            Window newWidow = new NewFile();
+            newWidow.Show();
         }
     }
 }

@@ -57,11 +57,9 @@ C:\Users\Chris\Documents\Sheetly\Sheetly\bin\Debug\netcoreapp3.1\System.Text.Enc
 C:\Users\Chris\Documents\Sheetly\Sheetly\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
 C:\Users\Chris\Documents\Sheetly\Sheetly\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.csprojAssemblyReference.cache
-C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly_MarkupCompile.cache
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly_MarkupCompile.lref
-C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\MainWindow.baml
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.g.resources
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.AssemblyInfoInputs.cache
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.AssemblyInfo.cs
@@ -70,3 +68,7 @@ C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.csproj.
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.dll
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.pdb
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.genruntimeconfig.cache
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\NewFile.g.cs
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\MainWindow.baml
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\NewFile.baml
