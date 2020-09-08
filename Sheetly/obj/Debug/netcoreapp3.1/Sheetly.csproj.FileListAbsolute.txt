@@ -68,7 +68,10 @@ C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.csproj.
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.dll
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.pdb
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.genruntimeconfig.cache
-C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\MainWindow.g.cs
-C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\NewFile.g.cs
-C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\MainWindow.baml
-C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\NewFile.baml
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\FileView.baml
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\FileView.g.cs
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\UploadFileView.g.cs
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\UploadFileView.baml
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\MainView.g.cs
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\MainView.baml

@@ -7,18 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="MainWindow.xaml.cs">
+    <Compile Update="MainView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="NewFile.xaml.cs">
+    <Compile Update="Views\FileView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\UploadFileView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Update="Views\UploadFileView.xaml.cs">
+      <SubType>Code</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="MainWindow.xaml">
+    <Page Update="MainView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="NewFile.xaml">
+    <Page Update="Views\FileView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UploadFileView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

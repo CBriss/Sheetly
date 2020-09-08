@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+
+using Sheetly.Models;
 
 namespace Sheetly.ViewModels
 {
@@ -22,11 +23,10 @@ namespace Sheetly.ViewModels
             }
         }
 
-        public void AddFile(string filePath)
+        public void AddFile(File newFile)
         {
             try
             {
-                File newFile = new File(filePath);
                 newFile.Name = "New File";
                 _fileList.Add(newFile);
                 System.Diagnostics.Debug.WriteLine("# of Files: " + _fileList.Count);

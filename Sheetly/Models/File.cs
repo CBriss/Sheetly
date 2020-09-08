@@ -6,35 +6,16 @@ using System.IO;
 
 // Note: EPPlus used, which has a small fee for commercial use
 
-namespace Sheetly
+namespace Sheetly.Models
 {
     public class File : INotifyPropertyChanged
     {
-        public enum SpreadsheetExtensions
-        {
-            csv,
-            txt,
-            xls,
-            xlsx,
-            numbers,
-            ods,
-            ots
-        }
-        public File(string filePath) {
-            string fileExtension = Path.GetExtension(filePath).Split('.')[1];
-            if(!(Enum.IsDefined(typeof(SpreadsheetExtensions), fileExtension))) {
-                throw new ArgumentException(String.Format("{0} is not a correct spreadsheet format", fileExtension));
-            }
-
-            this.filePath = filePath;
-            extension = (SpreadsheetExtensions)Enum.Parse(typeof(SpreadsheetExtensions), fileExtension);
-            delimiter = ",";
-            ReadRows();
-        }
+        #region Properties
 
         private string filePath;
-        public string FilePath {
-            get { return filePath; }
+        public string FilePath
+        {
+            get =>  filePath;
             set { filePath = value; OnPropertyChange(filePath); }
         }
 
@@ -43,82 +24,97 @@ namespace Sheetly
             get { return filePath.Split('/')[^1]; }
         }
 
-        private SpreadsheetExtensions extension;
-        public SpreadsheetExtensions Extension
+        private ValidSpreadsheetExtensions extension;
+        public ValidSpreadsheetExtensions Extension
         {
-            get { return extension; }
+            get => extension;
             set { extension = value; OnPropertyChange(extension.ToString()); }
         }
 
         private List<List<string>> rows;
         public List<List<string>> Rows
         {
-            get { return rows;  }
+            get => rows;
             set { rows = value; }
         }
 
         private int rowCount;
         public int RowCount
         {
-            get { return rowCount; }
+            get => rowCount;
             set { rowCount = value; }
         }
 
         private List<String> headers;
         public List<String> Headers
         {
-            get { return headers; }
-            set { headers = value;  }
+            get => headers;
+            set { headers = value; }
         }
 
         private string name;
-        public string Name {
-            get { return name; }
-            set { name = value; } 
+        public string Name
+        {
+            get => name;
+            set { name = value; }
         }
 
         private string delimiter;
         public string Delimiter
         {
-            get { return delimiter; }
+            get => delimiter;
             set { delimiter = value; }
+        }
+        #endregion
+
+        #region Base Methods
+        public File(string filePath) {
+            string fileExtension = Path.GetExtension(filePath).Split('.')[1];
+            if(!(Enum.IsDefined(typeof(ValidSpreadsheetExtensions), fileExtension))) {
+                throw new ArgumentException(String.Format("{0} is not a correct spreadsheet format", fileExtension));
+            }
+
+            this.filePath = filePath;
+            extension = (ValidSpreadsheetExtensions)Enum.Parse(typeof(ValidSpreadsheetExtensions), fileExtension);
+            delimiter = ",";
+            ReadRows();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected void OnPropertyChange(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
 
         public void ReadRows()
         {
             switch (extension)
             {
-                case SpreadsheetExtensions.csv:
+                case ValidSpreadsheetExtensions.csv:
                     Console.WriteLine("csv");
                     rows = FileReader.ReadCSV(filePath, delimiter);
                     break;
-                case SpreadsheetExtensions.txt:
+                case ValidSpreadsheetExtensions.txt:
                     Console.WriteLine("txt");
                     rows = FileReader.ReadCSV(filePath, delimiter);
                     break;
-                case SpreadsheetExtensions.xls:
+                case ValidSpreadsheetExtensions.xls:
                     rows = FileReader.ReadExcel(filePath);
                     Console.WriteLine("xls");
                     break;
-                case SpreadsheetExtensions.xlsx:
+                case ValidSpreadsheetExtensions.xlsx:
                     rows = FileReader.ReadExcel(filePath);
                     Console.WriteLine("xlsx");
                     break;
-                case SpreadsheetExtensions.numbers:
+                case ValidSpreadsheetExtensions.numbers:
                     Console.WriteLine("numbers");
                     break;
-                case SpreadsheetExtensions.ods:
+                case ValidSpreadsheetExtensions.ods:
                     Console.WriteLine("ods");
                     FileReader.ReadOds(filePath);
                     break;
-                case SpreadsheetExtensions.ots:
+                case ValidSpreadsheetExtensions.ots:
                     Console.WriteLine("ots");
                     FileReader.ReadOds(filePath);
                     break;

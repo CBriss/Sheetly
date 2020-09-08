@@ -1,33 +1,35 @@
-﻿using Microsoft.Win32;
+﻿using Sheetly.Models;
 using Sheetly.ViewModels;
-using System.Collections.Generic;
-using System.ComponentModel;
+using Sheetly.Views;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace Sheetly
 {
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : Window
+    public partial class MainView : Window
     {
         FileViewModel fileViewModel;
 
-        public MainMenu()
+        public MainView()
         {
             fileViewModel = new FileViewModel();
-
-            // The DataContext serves as the starting point of Binding Paths
             DataContext = fileViewModel;
-
             InitializeComponent();
         }
 
         private void NewFileWindow(object sender, RoutedEventArgs e)
         {
-            Window newWidow = new NewFile();
+            UploadFileView newWidow = new UploadFileView();
             newWidow.Show();
+
+            //newWidow.OnNewFile += AddNewFile;
+        }
+
+        public void AddNewFile(File newFile)
+        {
+            fileViewModel.AddFile(newFile);
         }
     }
 }

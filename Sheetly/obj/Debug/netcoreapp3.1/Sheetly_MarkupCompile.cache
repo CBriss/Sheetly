@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Chris\Documents\Sheetly\Sheetly\App.xaml
-2-314246940
+31731388013
 
-101956427983
+14-222553378
 2051876832095
-MainWindow.xaml;NewFile.xaml;
+MainView.xaml;Views\FileView.xaml;Views\UploadFileView.xaml;
 
 False
 
