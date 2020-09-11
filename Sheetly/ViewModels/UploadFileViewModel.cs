@@ -8,6 +8,8 @@ namespace Sheetly.ViewModels
 {
     class UploadFileViewModel : BaseViewModel
     {
+        public static Action<File> onNewFile;
+
         private File newFile;
 
         public File NewFile
@@ -21,10 +23,12 @@ namespace Sheetly.ViewModels
         }
 
         public ICommand upload { get; set;  }
+        public ICommand addFile { get; set; }
 
         public UploadFileViewModel()
         {
             upload = new Command(UploadNewFile);
+            addFile = new Command(AddNewFile);
         }
 
         private void UploadNewFile(object sender)
@@ -34,6 +38,11 @@ namespace Sheetly.ViewModels
             {
                 NewFile = new File(fileDialog.FileName);
             }
+        }
+
+        private void AddNewFile(object sender)
+        {
+            onNewFile(NewFile);
         }
     }
 }

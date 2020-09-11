@@ -4,34 +4,44 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
-      d:DesignHeight="250" d:DesignWidth="400"
+      Height="400" Width="600"
       Title="New File Window">
 
-    <Grid>
+    <Grid Margin="20" MaxWidth="600" MaxHeight="400" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Row="1" Grid.Column="1" Content="Add New File" Command="{Binding upload}" Foreground="White"
-                Background="#FF6381CF" Padding="5,5,5,5" FontFamily="Sitka Small" FontWeight="Bold"  />
+        <Label Grid.Row="0" Grid.Column="0" Content="Name" />
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding NewFile.Name, Mode=TwoWay}"/>
 
-        <TextBox Grid.Row="0" Grid.Column="0" Text="{Binding NewFile.Name, Mode=TwoWay}"/>
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding NewFile.FileName}" />
-        <TextBlock  Grid.Row="1" Grid.Column="0" Text="{Binding NewFile.RowCount}" />
-        <ComboBox  Grid.Row="0" Grid.Column="2" Name="comboBox1"
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Path" />
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding NewFile.FileName}" />
+        <Button Grid.Row="1" Grid.Column="2" Content="Find" Command="{Binding upload}" Foreground="White"
+                Background="#FF78AFFF" Padding="5,5,5,5" FontFamily="Consolas" FontWeight="Bold" FontSize="17" />
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Index Column" />
+        <ComboBox  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="comboBox1"
                             ItemsSource="{Binding NewFile.Headers}"
                             Text="Header Name"
                             IsEditable="true"
                             IsReadOnly="true"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Number of Rows" />
+        <TextBlock  Grid.Row="3" Grid.Column="1" Text="{Binding NewFile.RowCount}" />
+
+        <Button Grid.Row="4" Grid.Column="1" Content="Add" Command="{Binding addFile}" Foreground="White"
+                Background="#FF78AFFF" Padding="5,5,5,5" FontFamily="Consolas" FontWeight="Bold" FontSize="17"  />
 
     </Grid>
 </Window>
