@@ -24,7 +24,7 @@ namespace Sheetly
             UploadFileView newWidow = new UploadFileView();
             newWidow.Show();
 
-            //newWidow.OnNewFile += AddNewFile;
+            UploadFileViewModel.onNewFile += AddNewFile;
         }
 
         public void AddNewFile(File newFile)

@@ -11,8 +11,6 @@ namespace Sheetly.ViewModels
         public ObservableCollection<File> _fileList;
         public FileViewModel() {
             _fileList = new ObservableCollection<File>();
-
-            UploadFileViewModel.onNewFile += AddFile;
         }
 
         public ObservableCollection<File> FileList
@@ -29,11 +27,9 @@ namespace Sheetly.ViewModels
         {
             try
             {
-                newFile.Name = "New File";
-                _fileList.Add(newFile);
-                System.Diagnostics.Debug.WriteLine("# of Files: " + _fileList.Count);
-                OnPropertyChanged("FileList");
-                
+                FileList.Add(newFile);
+                System.Diagnostics.Debug.WriteLine("# of Files: " + FileList.Count);
+                OnPropertyChanged("FileList");   
             }
             catch (ArgumentException e)
             {

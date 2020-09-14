@@ -75,6 +75,7 @@ namespace Sheetly.Models
             }
 
             this.filePath = filePath;
+            this.name = "New File";
             extension = (ValidSpreadsheetExtensions)Enum.Parse(typeof(ValidSpreadsheetExtensions), fileExtension);
             delimiter = ",";
             ReadRows();

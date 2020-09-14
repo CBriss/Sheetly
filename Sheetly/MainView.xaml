@@ -26,7 +26,11 @@
         <ItemsControl ItemsSource="{Binding FileList}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <views:FileView DataContext="{Binding}"/>
+                    <StackPanel>
+                        <TextBlock Text="Heya" />
+                        <TextBlock Text="{Binding FileName}" />
+                        <views:FileView DataContext="{Binding}"/>
+                    </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
