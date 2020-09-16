@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\
 Sheetly
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-E:\sheetly\Sheetly\App.xaml
-31731388013
+C:\Users\Chris\Documents\Sheetly\Sheetly\App.xaml
+2516284347
 
-14-222553378
+131819277084
 2051876832095
-MainView.xaml;Views\FileView.xaml;Views\UploadFileView.xaml;
+MainView.xaml;Views\UploadFileView.xaml;
 
-False
+True
 

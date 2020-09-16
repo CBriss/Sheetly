@@ -1,4 +1,5 @@
 ﻿using Sheetly.ViewModels;
+using Sheetly.Models;
 
 namespace Sheetly.Views
 {
@@ -14,6 +15,13 @@ namespace Sheetly.Views
             uploadFileViewModel = new UploadFileViewModel();
             DataContext = uploadFileViewModel;
             InitializeComponent();
+
+            UploadFileViewModel.onNewFile += CloseWindow;
+        }
+
+        public void CloseWindow(File file)
+        {
+            this.Close();
         }
     }
 }

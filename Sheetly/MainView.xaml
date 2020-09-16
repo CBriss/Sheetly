@@ -16,20 +16,37 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Row="1" Grid.Column="2" Content="Add New File" Click="NewFileWindow"  />
+        <Button Grid.Row="0" Grid.Column="1" Content="Add New File" Click="NewFileWindow"  />
 
-        <ItemsControl ItemsSource="{Binding FileList}">
+        <ItemsControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding FileList}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="Heya" />
-                        <TextBlock Text="{Binding FileName}" />
-                        <views:FileView DataContext="{Binding}"/>
+                        <StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="Gray" />
+                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="Margin" Value="25 5 25 5" />
+                                </Style>
+                            </StackPanel.Resources>
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Text="{Binding FileName}" />
+                            <TextBlock Text="{Binding RowCount}" />
+                            <ComboBox Name="comboBox1"
+                            ItemsSource="{Binding Headers}"
+                            Text="Header Name"
+                            IsEditable="true"
+                            IsReadOnly="true"/>
+                            <Button Content="x" 
+                                    Command="{Binding RemoveFile}"
+                                    CommandParameter="{Binding}" />
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

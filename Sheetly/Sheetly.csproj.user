@@ -10,9 +10,6 @@
     <Compile Update="MainView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\FileView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\UploadFileView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,9 +19,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\FileView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UploadFileView.xaml">
