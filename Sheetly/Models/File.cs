@@ -1,4 +1,5 @@
 ﻿using Sheetly.lib;
+using Sheetly.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,9 @@ namespace Sheetly.Models
     public class File : INotifyPropertyChanged
     {
         #region Properties
+
+        public static Action<File> onRemoveFromList;
+        public Command RemoveFromList { get; set; }
 
         private string filePath;
         public string FilePath
@@ -79,6 +83,8 @@ namespace Sheetly.Models
             extension = (ValidSpreadsheetExtensions)Enum.Parse(typeof(ValidSpreadsheetExtensions), fileExtension);
             delimiter = ",";
             ReadRows();
+
+            RemoveFromList = new Command(Remove);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -123,5 +129,11 @@ namespace Sheetly.Models
             rowCount = rows.Count;
             headers = new List<string>((IEnumerable<string>)rows[0]);
         }
+        
+        public void Remove(object sender)
+        {
+            onRemoveFromList(this);
+        }
+    
     }
 }

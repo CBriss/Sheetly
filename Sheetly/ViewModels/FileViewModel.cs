@@ -10,10 +10,9 @@ namespace Sheetly.ViewModels
     {
         public ObservableCollection<File> _fileList;
 
-        public ICommand removeFile { get; set; }
         public FileViewModel() {
             _fileList = new ObservableCollection<File>();
-            removeFile = new Command(RemoveFile);
+            File.onRemoveFromList += RemoveFile;
         }
 
         public ObservableCollection<File> FileList

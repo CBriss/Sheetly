@@ -44,8 +44,7 @@
                             IsEditable="true"
                             IsReadOnly="true"/>
                             <Button Content="x" 
-                                    Command="{Binding RemoveFile}"
-                                    CommandParameter="{Binding}" />
+                                    Command="{Binding Path=RemoveFromList}" />
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

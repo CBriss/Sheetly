@@ -22,8 +22,8 @@ namespace Sheetly.ViewModels
             }
         }
 
-        public ICommand upload { get; set;  }
-        public ICommand addFile { get; set; }
+        public Command upload { get; set;  }
+        public Command addFile { get; set; }
 
         public UploadFileViewModel()
         {
