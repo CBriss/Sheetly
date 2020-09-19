@@ -34,6 +34,9 @@ namespace Sheetly.ViewModels
         private void UploadNewFile(object sender)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "Accepted files |*.txt;*.csv;*.xls;*.xlsx;*.number;*.odt";
+            fileDialog.RestoreDirectory = true;
+
             if (fileDialog.ShowDialog() == true)
             {
                 NewFile = new File(fileDialog.FileName);

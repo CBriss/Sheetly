@@ -68,8 +68,6 @@ C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.pdb
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.genruntimeconfig.cache
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\UploadFileView.g.cs
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\UploadFileView.baml
-C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\MainView.g.cs
-C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\MainView.baml
 E:\sheetly\Sheetly\bin\Debug\netcoreapp3.1\AODL.dll
 E:\sheetly\Sheetly\bin\Debug\netcoreapp3.1\ICSharpCode.SharpZipLib.dll
 E:\sheetly\Sheetly\bin\Debug\netcoreapp3.1\EPPlus.dll
@@ -92,3 +90,5 @@ E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\UploadFileView.g.cs
 E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\MainView.baml
 E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.csproj.CopyComplete
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\MainView.g.cs
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\MainView.baml

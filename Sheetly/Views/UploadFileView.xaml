@@ -6,6 +6,17 @@
       mc:Ignorable="d"
       Height="400" Width="600"
       Title="New File Window">
+    <Window.Resources>
+        <Style TargetType="{x:Type ComboBox}">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled"
+                 Value="False">
+                    <Setter Property="Foreground"
+                    Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
 
     <Grid Margin="20" MaxWidth="600" MaxHeight="400" >
         <Grid.RowDefinitions>
@@ -32,10 +43,14 @@
 
         <Label Grid.Row="2" Grid.Column="0" Content="Index Column" />
         <ComboBox  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="comboBox1"
-                            ItemsSource="{Binding NewFile.Headers}"
-                            Text="Header Name"
-                            IsEditable="true"
-                            IsReadOnly="true" Margin="5"/>
+                            ItemsSource="{Binding NewFile.Headers}" Margin="5" IsReadOnly="True" BorderBrush="White" Foreground="Black">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
 
         <Label Grid.Row="3" Grid.Column="0" Content="Number of Rows" />
         <TextBlock  Grid.Row="3" Grid.Column="1" Text="{Binding NewFile.RowCount}" Margin="5" />
