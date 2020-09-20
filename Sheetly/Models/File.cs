@@ -1,9 +1,11 @@
-﻿using Sheetly.lib;
+﻿using Microsoft.VisualBasic.FileIO;
+using Sheetly.lib;
 using Sheetly.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Windows;
 
 // Note: EPPlus used, which has a small fee for commercial use
 
@@ -21,11 +23,6 @@ namespace Sheetly.Models
         {
             get =>  filePath;
             set { filePath = value; OnPropertyChange(filePath); }
-        }
-
-        public string FileName
-        {
-            get { return filePath.Split('/')[^1]; }
         }
 
         private ValidSpreadsheetExtensions extension;
@@ -69,6 +66,15 @@ namespace Sheetly.Models
             get => delimiter;
             set { delimiter = value; }
         }
+
+        private string indexColumn;
+        public string IndexColumn
+        {
+            get => indexColumn;
+            set { indexColumn = value; }
+        }
+
+
         #endregion
 
         #region Base Methods
@@ -77,14 +83,20 @@ namespace Sheetly.Models
             if(!(Enum.IsDefined(typeof(ValidSpreadsheetExtensions), fileExtension))) {
                 throw new ArgumentException(String.Format("{0} is not a correct spreadsheet format", fileExtension));
             }
+            try
+            {
+                this.filePath = filePath;
+                this.name = "New File";
+                extension = (ValidSpreadsheetExtensions)Enum.Parse(typeof(ValidSpreadsheetExtensions), fileExtension);
+                delimiter = ",";
+                ReadRows();
 
-            this.filePath = filePath;
-            this.name = "New File";
-            extension = (ValidSpreadsheetExtensions)Enum.Parse(typeof(ValidSpreadsheetExtensions), fileExtension);
-            delimiter = ",";
-            ReadRows();
-
-            RemoveFromList = new Command(Remove);
+                RemoveFromList = new Command(Remove);
+            }
+            catch (MalformedLineException e)
+            {
+                throw new ArgumentException(String.Format("malformed file in \n{0}", filePath));
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -127,7 +139,7 @@ namespace Sheetly.Models
                     break;
             }
             rowCount = rows.Count;
-            headers = new List<string>((IEnumerable<string>)rows[0]);
+            Headers = new List<string>(rows[0]);
         }
         
         public void Remove(object sender)

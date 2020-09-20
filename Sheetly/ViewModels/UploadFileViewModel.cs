@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Microsoft.Win32;
 using Sheetly.Models;
@@ -39,13 +40,27 @@ namespace Sheetly.ViewModels
 
             if (fileDialog.ShowDialog() == true)
             {
-                NewFile = new File(fileDialog.FileName);
+                try
+                {
+                    NewFile = new File(fileDialog.FileName);
+                }
+                catch(ArgumentException e)
+                {
+                    MessageBox.Show(e.Message); ;
+                }
+                
             }
         }
 
         private void AddNewFile(object sender)
         {
             onNewFile(NewFile);
+        }
+
+        private void indexChanged(object sender, EventArgs e)
+        {
+            ComboBox cmb = sender as ComboBox;
+            NewFile.IndexColumn = (string)cmb.SelectedItem;
         }
     }
 }
