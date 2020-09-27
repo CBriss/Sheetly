@@ -2,6 +2,7 @@
 using Sheetly.ViewModels;
 using Sheetly.Views;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Sheetly
 {

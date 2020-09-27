@@ -74,6 +74,12 @@ namespace Sheetly.Models
             set { indexColumn = value; }
         }
 
+        private FileConnection connection;
+        public FileConnection Connection
+        {
+            get { return connection; }
+            set { connection = value; }
+        }
 
         #endregion
 
@@ -90,6 +96,7 @@ namespace Sheetly.Models
                 extension = (ValidSpreadsheetExtensions)Enum.Parse(typeof(ValidSpreadsheetExtensions), fileExtension);
                 delimiter = ",";
                 ReadRows();
+                Connection = new FileConnection();
 
                 RemoveFromList = new Command(Remove);
             }

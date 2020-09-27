@@ -45,6 +45,7 @@
         <ComboBox  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="comboBox1"
                    ItemsSource="{Binding NewFile.Headers}"
                    SelectedItem="{Binding NewFile.IndexColumn}"
+                   Text="Default Index Column"
                    Margin="5" IsReadOnly="True" BorderBrush="White" Foreground="Black">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1">
