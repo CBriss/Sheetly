@@ -9,7 +9,7 @@ namespace Sheetly.lib
         Unique,
         CountCommon,
         Add,
-        Substract,
+        Subtract,
         Combine
     }
 

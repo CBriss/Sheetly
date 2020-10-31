@@ -23,11 +23,36 @@
                                     Command="{Binding Path=RemoveFromList}" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50" MinWidth="50" Background="#FFCD5E5E" Foreground="White" FontWeight="Bold" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="25,15,0,15">
-            <Button Content="+" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50" MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold" />
-            <Button Content="-" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50" MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold" />
-            <Button Content="Combine" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50" MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold" />
-            <Button Content="Count Common" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50" MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold" />
-            <Button Content="Unique" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50" MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold" />
+            <Button 
+                Content="+" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50"
+                MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold"
+                Command="{Binding Path=SetNextFileOperation}"
+                CommandParameter="Add"
+                />
+            <Button
+                Content="-" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50"
+                MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold"
+                Command="{Binding Path=SetNextFileOperation}"
+                CommandParameter="Subtract"
+                />
+            <Button
+                Content="Combine" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50"
+                MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold"
+                Command="{Binding Path=SetNextFileOperation}"
+                CommandParameter="Combine"
+                />
+            <Button
+                Content="Count Common" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50"
+                MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold"
+                Command="{Binding Path=SetNextFileOperation}"
+                CommandParameter="CountCommon"
+                />
+            <Button
+                Content="Unique" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50"
+                MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold"
+                Command="{Binding Path=SetNextFileOperation}"
+                CommandParameter="Unique"
+                />
 
         </StackPanel>
     </StackPanel>

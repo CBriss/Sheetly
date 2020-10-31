@@ -4,6 +4,7 @@ using Sheetly.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 
@@ -17,6 +18,7 @@ namespace Sheetly.Models
 
         public static Action<File> onRemoveFromList;
         public Command RemoveFromList { get; set; }
+        public Command SetNextFileOperation { get; set; }
 
         private string filePath;
         public string FilePath
@@ -99,6 +101,8 @@ namespace Sheetly.Models
                 Connection = new FileConnection();
 
                 RemoveFromList = new Command(Remove);
+
+                SetNextFileOperation = new Command(SetOperation);
             }
             catch (MalformedLineException e)
             {
@@ -153,6 +157,12 @@ namespace Sheetly.Models
         {
             onRemoveFromList(this);
         }
-    
+
+        public void SetOperation(object sender)
+        {
+            connection.Operation = (AllowedOperations)Enum.Parse(typeof(AllowedOperations), (string)sender);
+            Debug.Print(connection.Operation.ToString());
+        }
+
     }
 }

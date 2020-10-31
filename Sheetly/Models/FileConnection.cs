@@ -9,11 +9,11 @@ namespace Sheetly.Models
     {
         #region Properties
 
-        private File destinationFile;
-        public File DestinationFile
+        private File nextFile;
+        public File NextFile
         {
-            get { return destinationFile; }
-            set { destinationFile = value; }
+            get { return nextFile; }
+            set { nextFile = value; }
         }
 
         private AllowedOperations operation;
@@ -24,9 +24,5 @@ namespace Sheetly.Models
         }
 
         #endregion
-
-
-
-
     }
 }

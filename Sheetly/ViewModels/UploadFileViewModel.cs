@@ -12,7 +12,6 @@ namespace Sheetly.ViewModels
         public static Action<File> onNewFile;
 
         private File newFile;
-
         public File NewFile
         {
             get { return newFile; }
@@ -23,38 +22,23 @@ namespace Sheetly.ViewModels
             }
         }
 
-        public Command upload { get; set;  }
-        public Command addFile { get; set; }
+        public Command submitFile { get; set; }
+        public Command setFile { get; set; }
 
         public UploadFileViewModel()
         {
-            upload = new Command(UploadNewFile);
-            addFile = new Command(AddNewFile);
+            submitFile = new Command(SubmitFileCommand);
+            setFile = new Command(setNewFile);
         }
 
-        private void UploadNewFile(object sender)
-        {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "Accepted files |*.txt;*.csv;*.xls;*.xlsx;*.number;*.odt";
-            fileDialog.RestoreDirectory = true;
-
-            if (fileDialog.ShowDialog() == true)
-            {
-                try
-                {
-                    NewFile = new File(fileDialog.FileName);
-                }
-                catch(ArgumentException e)
-                {
-                    MessageBox.Show(e.Message); ;
-                }
-                
-            }
-        }
-
-        private void AddNewFile(object sender)
+        private void SubmitFileCommand(object sender)
         {
             onNewFile(NewFile);
+        }
+
+        private void setNewFile(object fileName)
+        {
+            NewFile = new File((string)fileName);
         }
 
         private void indexChanged(object sender, EventArgs e)
