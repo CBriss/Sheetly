@@ -44,5 +44,8 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
+        <Button Grid.Row="2" Grid.Column="0" Content="Select File Here" Command="{Binding processFiles}" Foreground="White"
+                Background="#FF78AFFF" Padding="5" FontFamily="Consolas" FontWeight="Bold" FontSize="15" Margin="5" />
+
     </Grid>
 </Window>
