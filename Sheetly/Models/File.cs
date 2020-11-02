@@ -14,12 +14,18 @@ namespace Sheetly.Models
 {
     public class File : INotifyPropertyChanged
     {
-        #region Properties
 
-        public static Action<File> onRemoveFromList;
+        #region Variables
         public Command RemoveFromList { get; set; }
-        public Command SetNextFileOperation { get; set; }
+        public static Action<File> onRemoveFromList;
 
+        public Command OpenFileEditing { get; set; }
+        public static Action<File> onFileEditing;
+        
+        public Command SetNextFileOperation { get; set; }
+        #endregion
+
+        #region Properties
         private string filePath;
         public string FilePath
         {
@@ -86,9 +92,11 @@ namespace Sheetly.Models
         #endregion
 
         #region Base Methods
-        public File(string filePath) {
+        public File(string filePath)
+        {
             string fileExtension = Path.GetExtension(filePath).Split('.')[1];
-            if(!(Enum.IsDefined(typeof(ValidSpreadsheetExtensions), fileExtension))) {
+            if(!(Enum.IsDefined(typeof(ValidSpreadsheetExtensions), fileExtension)))
+            {
                 throw new ArgumentException(String.Format("{0} is not a correct spreadsheet format", fileExtension));
             }
             try
@@ -99,9 +107,8 @@ namespace Sheetly.Models
                 delimiter = ",";
                 ReadRows();
                 Connection = new FileConnection();
-
                 RemoveFromList = new Command(Remove);
-
+                OpenFileEditing = new Command(OpenEditFileView);
                 SetNextFileOperation = new Command(SetOperation);
             }
             catch (MalformedLineException e)
@@ -115,6 +122,20 @@ namespace Sheetly.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
+
+        #region Command Methods
+        
+        public void Remove(object sender)
+        {
+            onRemoveFromList(this);
+        }
+
+        public void OpenEditFileView(object sender)
+        {
+            onFileEditing(this);
+        }
+
         #endregion
 
         public void ReadRows()
@@ -151,11 +172,6 @@ namespace Sheetly.Models
             }
             rowCount = rows.Count;
             Headers = new List<string>(rows[0]);
-        }
-        
-        public void Remove(object sender)
-        {
-            onRemoveFromList(this);
         }
 
         public void SetOperation(object sender)

@@ -82,8 +82,6 @@ E:\sheetly\Sheetly\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 E:\sheetly\Sheetly\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
 E:\sheetly\Sheetly\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
 E:\sheetly\Sheetly\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
-E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\UploadFileView.baml
-E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\UploadFileView.g.cs
 E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\Sheetly.csproj.CopyComplete
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\MainView.g.cs
@@ -109,3 +107,5 @@ E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\Styles\Texts.baml
 E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\Styles\Windows.baml
 E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\UserControls\FileUserControl.baml
 E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\MainView.baml
+E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\EditFileView.baml
+E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\EditFileView.g.cs

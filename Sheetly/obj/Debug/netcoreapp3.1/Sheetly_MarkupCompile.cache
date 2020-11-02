@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 E:\sheetly\Sheetly\App.xaml
-8859864055
+8-123266646
 
-16-491627006
+16-1163972009
 206341753954
-Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\Texts.xaml;Styles\Windows.xaml;UserControls\FileUserControl.xaml;Views\MainView.xaml;Views\UploadFileView.xaml;
+Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\Texts.xaml;Styles\Windows.xaml;UserControls\FileUserControl.xaml;Views\EditFileView.xaml;Views\MainView.xaml;
 
 False
 

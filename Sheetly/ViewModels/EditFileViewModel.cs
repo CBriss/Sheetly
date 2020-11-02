@@ -7,10 +7,11 @@ using Sheetly.Models;
 
 namespace Sheetly.ViewModels
 {
-    class UploadFileViewModel : BaseViewModel
+    class EditFileViewModel : BaseViewModel
     {
         public static Action<File> onNewFile;
 
+        #region Properties
         private File newFile;
         public File NewFile
         {
@@ -24,13 +25,17 @@ namespace Sheetly.ViewModels
 
         public Command submitFile { get; set; }
         public Command setFile { get; set; }
+        #endregion
 
-        public UploadFileViewModel()
+        #region Base Methods
+        public EditFileViewModel()
         {
             submitFile = new Command(SubmitFileCommand);
             setFile = new Command(setNewFile);
         }
+        #endregion
 
+        #region Other Methods
         private void SubmitFileCommand(object sender)
         {
             onNewFile(NewFile);
@@ -46,5 +51,6 @@ namespace Sheetly.ViewModels
             ComboBox cmb = sender as ComboBox;
             NewFile.IndexColumn = (string)cmb.SelectedItem;
         }
+        #endregion
     }
 }
