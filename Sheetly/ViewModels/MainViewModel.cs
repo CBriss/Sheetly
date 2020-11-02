@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
 using Sheetly.Models;
 using Sheetly.Views;
+using Sheetly.lib;
 
 namespace Sheetly.ViewModels
 {
     class MainViewModel : BaseViewModel
     {
         public Command finderUpload { get; set; }
+        public Command processFiles { get; set; }
 
         public static Action<string> onNewFileUploaded;
         public MainViewModel() {
@@ -21,6 +24,7 @@ namespace Sheetly.ViewModels
             UploadFileViewModel.onNewFile += AddFile;
 
             finderUpload = new Command(UploadNewFileFromFinderCommand);
+            processFiles = new Command(ProcessFiles);
         }
 
         public ObservableCollection<File> _fileList;
@@ -34,6 +38,18 @@ namespace Sheetly.ViewModels
             }
         }
 
+
+        public File _outputFile;
+        public File OutputFile
+        {
+            get { return _outputFile; }
+            set
+            {
+                _outputFile = value;
+                OnPropertyChanged("OutputFile");
+            }
+        }
+        
         public void AddFile(File newFile)
         {
             try
@@ -81,6 +97,64 @@ namespace Sheetly.ViewModels
                 }
 
             }
+        }
+
+        private void ProcessFiles(object sender)
+        {
+            OutputFile = FileList[0];
+            File nextFile = OutputFile.Connection.NextFile;
+            AllowedOperations nextOperation = OutputFile.Connection.Operation;
+            
+            while(OutputFile.Connection.NextFile != null)
+            {
+                switch (nextOperation)
+                {
+                    case AllowedOperations.Add:
+                        Console.WriteLine("Adding");
+                        OutputFile.Rows = FileOperations.Add(OutputFile.Rows, nextFile.Rows);
+                        break;
+                    case AllowedOperations.Subtract:
+                        Console.WriteLine("Subtract");
+                        OutputFile.Rows = FileOperations.Subtract(
+                            OutputFile.Rows,
+                            OutputFile.Headers.IndexOf(OutputFile.IndexColumn),
+                            nextFile.Rows,
+                            nextFile.Headers.IndexOf(nextFile.IndexColumn)
+                            );
+                        break;
+                    case AllowedOperations.Combine:
+                        Console.WriteLine("Combine");
+                        OutputFile.Rows = FileOperations.Combine(
+                            OutputFile.Rows,
+                            OutputFile.Headers.IndexOf(OutputFile.IndexColumn),
+                            nextFile.Rows,
+                            nextFile.Headers.IndexOf(nextFile.IndexColumn)
+                            );
+                        break;
+                    case AllowedOperations.CountCommon:
+                        Console.WriteLine("Count Common");
+                        int outputNumber = FileOperations.CountCommon(
+                            OutputFile.Rows,
+                            OutputFile.Headers.IndexOf(OutputFile.IndexColumn),
+                            nextFile.Rows,
+                            nextFile.Headers.IndexOf(nextFile.IndexColumn)
+                            );
+                        Debug.Print(outputNumber.ToString());
+                        break;
+                    case AllowedOperations.Unique:
+                        Console.WriteLine("Unique");
+                        OutputFile.Rows = FileOperations.Unique(
+                            OutputFile.Rows,
+                            OutputFile.Headers.IndexOf(OutputFile.IndexColumn)
+                            );
+                        break;
+                default:
+                        Console.WriteLine("Default case");
+                        break;
+                }
+                OutputFile = nextFile.Connection.NextFile;
+            }
+
         }
     }
 }

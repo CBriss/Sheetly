@@ -26,7 +26,6 @@
             </ItemsControl>
         </Grid>
 
-
         <Grid Grid.Row="0" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*" />
