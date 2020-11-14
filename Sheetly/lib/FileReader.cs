@@ -30,6 +30,7 @@ namespace Sheetly.lib
             }
             return rows;
         }
+        
         public static List<List<string>> ReadExcel(string filePath)
         {
             List<List<string>> rows = new List<List<string>>();
@@ -44,11 +45,13 @@ namespace Sheetly.lib
                 List<string> row = new List<string>();
                 for (int rowNum = start.Row; rowNum <= end.Row; rowNum++)
                 {
-                    row.Clear();
+                    row = new List<string>();
                     for (int col = start.Column; col <= end.Column; col++)
                     {
-                        row[col] = worksheet.Cells[rowNum, col].Text;
+                        row.Add(worksheet.Cells[rowNum, col].Text);
                     }
+                    // NOTE: Here, row is passed by address
+                    //        So changing row changes the entire rows list
                     rows.Add(row);
                 }
             }
