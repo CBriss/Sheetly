@@ -13,20 +13,14 @@ namespace Sheetly.ViewModels
 {
     class MainViewModel : BaseViewModel
     {
-        public Command finderUpload { get; set; }
-        public Command processFiles { get; set; }
-
         public static Action<string> onNewFileUploaded;
-        public MainViewModel() {
-            _fileList = new ObservableCollection<File>();
-            File.onRemoveFromList += RemoveFile;
 
-            UploadFileViewModel.onNewFile += AddFile;
-
-            finderUpload = new Command(UploadNewFileFromFinderCommand);
-            processFiles = new Command(ProcessFiles);
-        }
-
+        #region Commands
+        public Command findNewFile { get; set; }
+        public Command processFiles { get; set; }
+        #endregion
+        
+        #region Properties
         public ObservableCollection<File> _fileList;
         public ObservableCollection<File> FileList
         {
@@ -38,7 +32,6 @@ namespace Sheetly.ViewModels
             }
         }
 
-
         public File _outputFile;
         public File OutputFile
         {
@@ -49,7 +42,22 @@ namespace Sheetly.ViewModels
                 OnPropertyChanged("OutputFile");
             }
         }
-        
+        #endregion
+
+        #region Base Methods
+        public MainViewModel() {
+            _fileList = new ObservableCollection<File>();
+            File.onRemoveFromList += RemoveFile;
+            File.onEditFile += OpenEditFileView;
+
+            EditFileViewModel.onNewFile += AddFile;
+
+            findNewFile = new Command(UploadNewFileFromFinderCommand);
+            processFiles = new Command(ProcessFiles);
+        }
+        #endregion
+
+        #region Other Methods
         public void AddFile(File newFile)
         {
             try
@@ -58,8 +66,7 @@ namespace Sheetly.ViewModels
                 {
                     File lastFile = FileList.Last();
                     lastFile.Connection.NextFile = newFile;
-                }
-                
+                }   
 
                 FileList.Add(newFile);
                 System.Diagnostics.Debug.WriteLine("# of Files: " + FileList.Count);
@@ -68,8 +75,7 @@ namespace Sheetly.ViewModels
             catch (ArgumentException e)
             {
                 MessageBox.Show(e.Message, "Exception");
-            }
-            
+            }   
         }
 
         public void RemoveFile(object sender)
@@ -77,6 +83,13 @@ namespace Sheetly.ViewModels
             FileList.Remove((File)sender);
             System.Diagnostics.Debug.WriteLine("# of Files: " + FileList.Count);
             OnPropertyChanged("FileList");
+        }
+
+        public void OpenEditFileView(File file)
+        {
+            EditFileView editFileView = new EditFileView();
+            editFileView.WillEventuallyBeSetFile(file);
+            editFileView.Show();
         }
 
         private void UploadNewFileFromFinderCommand(object sender)
@@ -156,5 +169,6 @@ namespace Sheetly.ViewModels
             }
 
         }
+        #endregion
     }
 }

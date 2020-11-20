@@ -13,6 +13,7 @@ namespace Sheetly
     {
         MainViewModel mainViewModel;
 
+        #region Base Methods
         public MainView()
         {
             mainViewModel = new MainViewModel();
@@ -21,28 +22,30 @@ namespace Sheetly
             MainViewModel.onNewFileUploaded += LoadUploadNewFileWindow;
             InitializeComponent();
         }
+        #endregion
 
-        private void FileDropStackPanel_Drop(object sender, System.Windows.DragEventArgs e)
+        #region Other Methods
+        private void DropNewFile(object sender, System.Windows.DragEventArgs e)
         {
-            UploadFileView newUploadWidow = new UploadFileView();
+            EditFileView editFileView = new EditFileView();
             
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] fileStrings = (string[])e.Data.GetData(DataFormats.FileDrop);
                 foreach (string fileString in fileStrings)
                 {
-                    newUploadWidow.setFile(fileString);
+                    editFileView.setFile(fileString);
                 }
             }
-            newUploadWidow.Show();
+            editFileView.Show();
         }
 
         private void LoadUploadNewFileWindow(string fileName)
         {
-            UploadFileView newUploadWidow = new UploadFileView();
-            newUploadWidow.setFile(fileName);
-            newUploadWidow.Show();
+            EditFileView newEditFileWidow = new EditFileView();
+            newEditFileWidow.setFile(fileName);
+            newEditFileWidow.Show();
         }
-
+        #endregion
     }
 }

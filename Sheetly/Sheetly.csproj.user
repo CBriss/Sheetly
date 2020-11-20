@@ -7,18 +7,18 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="UserControls\EditableTextBlock.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserControls\FileUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\MainView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\UploadFileView.xaml.cs">
+    <Compile Update="Views\EditFileView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Update="Views\UploadFileView.xaml.cs">
-      <SubType>Code</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Styles\Texts.xaml">
@@ -36,13 +36,16 @@
     <Page Update="Styles\Fonts.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UserControls\EditableTextBlock.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UserControls\FileUserControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\UploadFileView.xaml">
+    <Page Update="Views\EditFileView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
