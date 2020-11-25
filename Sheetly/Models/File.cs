@@ -138,6 +138,7 @@ namespace Sheetly.Models
 
         #endregion
 
+        #region Misc. Methods
         public void ReadRows()
         {
             switch (extension)
@@ -179,6 +180,6 @@ namespace Sheetly.Models
             connection.Operation = (AllowedOperations)Enum.Parse(typeof(AllowedOperations), (string)sender);
             Debug.Print(connection.Operation.ToString());
         }
-
+        #endregion
     }
 }

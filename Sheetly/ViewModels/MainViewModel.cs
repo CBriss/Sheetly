@@ -114,20 +114,26 @@ namespace Sheetly.ViewModels
 
         private void ProcessFiles(object sender)
         {
+            if (FileList.Count == 1)
+            {
+                OutputFile = FileList[0];
+                return;
+            }
+                
             OutputFile = FileList[0];
-            File nextFile = OutputFile.Connection.NextFile;
-            AllowedOperations nextOperation = OutputFile.Connection.Operation;
+            File nextFile = FileList[0].Connection.NextFile;
+            AllowedOperations nextOperation = FileList[0].Connection.Operation;
             
-            while(OutputFile.Connection.NextFile != null)
+            while(nextFile != null)
             {
                 switch (nextOperation)
                 {
                     case AllowedOperations.Add:
-                        Console.WriteLine("Adding");
+                        System.Diagnostics.Debug.WriteLine("Adding");
                         OutputFile.Rows = FileOperations.Add(OutputFile.Rows, nextFile.Rows);
                         break;
                     case AllowedOperations.Subtract:
-                        Console.WriteLine("Subtract");
+                        System.Diagnostics.Debug.WriteLine("Subtract");
                         OutputFile.Rows = FileOperations.Subtract(
                             OutputFile.Rows,
                             OutputFile.Headers.IndexOf(OutputFile.IndexColumn),
@@ -136,7 +142,7 @@ namespace Sheetly.ViewModels
                             );
                         break;
                     case AllowedOperations.Combine:
-                        Console.WriteLine("Combine");
+                        System.Diagnostics.Debug.WriteLine("Combine");
                         OutputFile.Rows = FileOperations.Combine(
                             OutputFile.Rows,
                             OutputFile.Headers.IndexOf(OutputFile.IndexColumn),
@@ -145,7 +151,7 @@ namespace Sheetly.ViewModels
                             );
                         break;
                     case AllowedOperations.CountCommon:
-                        Console.WriteLine("Count Common");
+                        System.Diagnostics.Debug.WriteLine("Count Common");
                         int outputNumber = FileOperations.CountCommon(
                             OutputFile.Rows,
                             OutputFile.Headers.IndexOf(OutputFile.IndexColumn),
@@ -155,17 +161,18 @@ namespace Sheetly.ViewModels
                         Debug.Print(outputNumber.ToString());
                         break;
                     case AllowedOperations.Unique:
-                        Console.WriteLine("Unique");
+                        System.Diagnostics.Debug.WriteLine("Unique");
                         OutputFile.Rows = FileOperations.Unique(
                             OutputFile.Rows,
                             OutputFile.Headers.IndexOf(OutputFile.IndexColumn)
                             );
                         break;
                 default:
-                        Console.WriteLine("Default case");
+                        System.Diagnostics.Debug.WriteLine("Default case");
                         break;
                 }
-                OutputFile = nextFile.Connection.NextFile;
+                nextOperation = nextFile.Connection.Operation;
+                nextFile = nextFile.Connection.NextFile;
             }
 
         }
