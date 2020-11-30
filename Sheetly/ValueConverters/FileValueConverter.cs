@@ -12,7 +12,7 @@ namespace Sheetly.ValueConverters
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (File)value;
+            return (SpreadsheetFile)value;
         }
 
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

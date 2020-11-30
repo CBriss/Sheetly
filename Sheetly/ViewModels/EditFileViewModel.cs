@@ -9,11 +9,11 @@ namespace Sheetly.ViewModels
 {
     class EditFileViewModel : BaseViewModel
     {
-        public static Action<File> onNewFile;
+        public static Action<SpreadsheetFile> onNewFile;
 
         #region Properties
-        private File newFile;
-        public File NewFile
+        private SpreadsheetFile newFile;
+        public SpreadsheetFile NewFile
         {
             get { return newFile; }
             set
@@ -43,7 +43,7 @@ namespace Sheetly.ViewModels
 
         private void setNewFile(object fileName)
         {
-            NewFile = new File((string)fileName);
+            NewFile = new SpreadsheetFile((string)fileName);
         }
 
         private void indexChanged(object sender, EventArgs e)

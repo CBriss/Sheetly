@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\
+E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\
 Sheetly
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\Chris\Documents\Sheetly\Sheetly\App.xaml
+E:\sheetly\Sheetly\App.xaml
 91310154534
 
-17-895341767
+18-139730878
 206341753954
 Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\Texts.xaml;Styles\Windows.xaml;UserControls\EditableTextBlock.xaml;UserControls\FileUserControl.xaml;Views\EditFileView.xaml;Views\MainView.xaml;
 

@@ -111,3 +111,5 @@ C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\EditFileV
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\Views\EditFileView.g.cs
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\UserControls\EditableTextBlock.g.cs
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\UserControls\EditableTextBlock.baml
+E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\UserControls\EditableTextBlock.g.cs
+E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\UserControls\EditableTextBlock.baml

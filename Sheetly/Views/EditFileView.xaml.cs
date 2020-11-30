@@ -2,7 +2,6 @@
 using Sheetly.Models;
 using System.Windows;
 using System.IO;
-using File = Sheetly.Models.File;
 
 namespace Sheetly.Views
 {
@@ -30,12 +29,12 @@ namespace Sheetly.Views
             editFileViewModel.setFile.Execute(fileName);
         }
 
-        public void WillEventuallyBeSetFile(File file)
+        public void WillEventuallyBeSetFile(SpreadsheetFile file)
         {
             editFileViewModel.NewFile = file;
         }
 
-        public void CloseWindow(Models.File file)
+        public void CloseWindow(SpreadsheetFile file)
         {
             this.Close();
         }

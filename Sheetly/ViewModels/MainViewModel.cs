@@ -21,8 +21,8 @@ namespace Sheetly.ViewModels
         #endregion
         
         #region Properties
-        public ObservableCollection<File> _fileList;
-        public ObservableCollection<File> FileList
+        public ObservableCollection<SpreadsheetFile> _fileList;
+        public ObservableCollection<SpreadsheetFile> FileList
         {
             get { return _fileList; }
             set
@@ -32,8 +32,8 @@ namespace Sheetly.ViewModels
             }
         }
 
-        public File _outputFile;
-        public File OutputFile
+        public SpreadsheetFile _outputFile;
+        public SpreadsheetFile OutputFile
         {
             get { return _outputFile; }
             set
@@ -46,9 +46,9 @@ namespace Sheetly.ViewModels
 
         #region Base Methods
         public MainViewModel() {
-            _fileList = new ObservableCollection<File>();
-            File.onRemoveFromList += RemoveFile;
-            File.onEditFile += OpenEditFileView;
+            _fileList = new ObservableCollection<SpreadsheetFile>();
+            SpreadsheetFile.onRemoveFromList += RemoveFile;
+            SpreadsheetFile.onEditFile += OpenEditFileView;
 
             EditFileViewModel.onNewFile += AddFile;
 
@@ -58,13 +58,13 @@ namespace Sheetly.ViewModels
         #endregion
 
         #region Other Methods
-        public void AddFile(File newFile)
+        public void AddFile(SpreadsheetFile newFile)
         {
             try
             {
                 if(FileList.Count > 0)
                 {
-                    File lastFile = FileList.Last();
+                    SpreadsheetFile lastFile = FileList.Last();
                     lastFile.Connection.NextFile = newFile;
                 }   
 
@@ -80,12 +80,12 @@ namespace Sheetly.ViewModels
 
         public void RemoveFile(object sender)
         {
-            FileList.Remove((File)sender);
+            FileList.Remove((SpreadsheetFile) sender);
             System.Diagnostics.Debug.WriteLine("# of Files: " + FileList.Count);
             OnPropertyChanged("FileList");
         }
 
-        public void OpenEditFileView(File file)
+        public void OpenEditFileView(SpreadsheetFile file)
         {
             EditFileView editFileView = new EditFileView();
             editFileView.WillEventuallyBeSetFile(file);
@@ -121,7 +121,7 @@ namespace Sheetly.ViewModels
             }
                 
             OutputFile = FileList[0];
-            File nextFile = FileList[0].Connection.NextFile;
+            SpreadsheetFile nextFile = FileList[0].Connection.NextFile;
             AllowedOperations nextOperation = FileList[0].Connection.Operation;
             
             while(nextFile != null)

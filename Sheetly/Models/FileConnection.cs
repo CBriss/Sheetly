@@ -9,8 +9,8 @@ namespace Sheetly.Models
     {
         #region Properties
 
-        private File nextFile;
-        public File NextFile
+        private SpreadsheetFile nextFile;
+        public SpreadsheetFile NextFile
         {
             get { return nextFile; }
             set { nextFile = value; }

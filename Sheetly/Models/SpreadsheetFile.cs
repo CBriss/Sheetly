@@ -6,21 +6,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Windows;
-
 // Note: EPPlus used, which has a small fee for commercial use
 
 namespace Sheetly.Models
 {
-    public class File : INotifyPropertyChanged
+    public class SpreadsheetFile : INotifyPropertyChanged
     {
 
         #region Variables
         public Command RemoveFromListCommand { get; set; }
-        public static Action<File> onRemoveFromList;
+        public static Action<SpreadsheetFile> onRemoveFromList;
 
         public Command EditFileCommand { get; set; }
-        public static Action<File> onEditFile;
+        public static Action<SpreadsheetFile> onEditFile;
         
         public Command SetNextFileOperation { get; set; }
         #endregion
@@ -92,7 +90,7 @@ namespace Sheetly.Models
         #endregion
 
         #region Base Methods
-        public File(string filePath)
+        public SpreadsheetFile(string filePath)
         {
             string fileExtension = Path.GetExtension(filePath).Split('.')[1];
             if(!(Enum.IsDefined(typeof(ValidSpreadsheetExtensions), fileExtension)))
