@@ -1,31 +1,17 @@
-﻿using System;
-using System.Text;
-using OfficeOpenXml;
-using AODL.Document.TextDocuments;
-using AODL.Document.Content;
-using System.Xml.Linq;
-using System.Linq;
+﻿using System.Text;
 using System.IO;
-using Microsoft.VisualBasic.FileIO;
-using System.Collections.Generic;
+using File = Sheetly.Models.File;
 
 namespace Sheetly.lib
 {
     class FileWriter
     {
-        public static void WriteCSV(string filePath, string delimiter)
+        public static void WriteCSV(File file)
         {
-            string strFilePath = @"D:\New folder\Data.csv";
-            string strSeperator = ",";
-            StringBuilder sbOutput = new StringBuilder();
-            for (int i = 0; i & amp; lt; ilength; i++)
-                sbOutput.AppendLine(string.Join(strSeperator, inaOutput[i]));
-
-            // Create and write the csv file
-            File.WriteAllText(strFilePath, sbOutput.ToString());
-
-            // To append more lines to the csv file
-            File.AppendAllText(strFilePath, sbOutput.ToString());
+            StringBuilder outputString = new StringBuilder();
+            for (int i = 0; i < file.RowCount; i++)
+                outputString.AppendLine(string.Join(file.Delimiter, file.Rows[i]));
+            System.IO.File.WriteAllText(Path.Combine(file.FilePath, file.Name), outputString.ToString());
         }
 
         public static void WriteExcel(string filePath, string delimiter)

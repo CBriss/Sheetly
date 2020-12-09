@@ -175,6 +175,14 @@ namespace Sheetly.ViewModels
                 nextFile = nextFile.Connection.NextFile;
             }
 
+            SaveOutputFile();
+        }
+
+        private void SaveOutputFile()
+        {
+            OutputFile.FilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            OutputFile.Name = "TestOutputFile.csv";
+            FileWriter.WriteCSV(OutputFile);
         }
         #endregion
     }

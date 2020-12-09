@@ -15,7 +15,7 @@ namespace Sheetly.Models
     public class File : INotifyPropertyChanged
     {
 
-        #region Variables
+        #region Commands
         public Command RemoveFromListCommand { get; set; }
         public static Action<File> onRemoveFromList;
 
@@ -44,7 +44,10 @@ namespace Sheetly.Models
         public List<List<string>> Rows
         {
             get => rows;
-            set { rows = value; }
+            set {
+                rows = value;
+                this.RowCount = value.Count;
+            }
         }
 
         private int rowCount;
@@ -144,31 +147,22 @@ namespace Sheetly.Models
             switch (extension)
             {
                 case ValidSpreadsheetExtensions.csv:
-                    Console.WriteLine("csv");
-                    rows = FileReader.ReadCSV(filePath, delimiter);
-                    break;
                 case ValidSpreadsheetExtensions.txt:
                     Console.WriteLine("txt");
-                    rows = FileReader.ReadCSV(filePath, delimiter);
+                    FileReader.ReadCSVIntoFile(this, filePath, delimiter);
                     break;
                 case ValidSpreadsheetExtensions.xls:
-                    rows = FileReader.ReadExcel(filePath);
-                    Console.WriteLine("xls");
-                    break;
                 case ValidSpreadsheetExtensions.xlsx:
-                    rows = FileReader.ReadExcel(filePath);
+                    FileReader.ReadExcelIntoFile(filePath);
                     Console.WriteLine("xlsx");
+                    break;
+                case ValidSpreadsheetExtensions.ods:
+                case ValidSpreadsheetExtensions.ots:
+                    Console.WriteLine("ots");
+                    FileReader.ReadOdsIntoFile(filePath);
                     break;
                 case ValidSpreadsheetExtensions.numbers:
                     Console.WriteLine("numbers");
-                    break;
-                case ValidSpreadsheetExtensions.ods:
-                    Console.WriteLine("ods");
-                    FileReader.ReadOds(filePath);
-                    break;
-                case ValidSpreadsheetExtensions.ots:
-                    Console.WriteLine("ots");
-                    FileReader.ReadOds(filePath);
                     break;
             }
             rowCount = rows.Count;
