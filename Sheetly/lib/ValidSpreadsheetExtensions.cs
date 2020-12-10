@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Sheetly.lib
+﻿namespace Sheetly.lib
 {
     public enum ValidSpreadsheetExtensions
     {

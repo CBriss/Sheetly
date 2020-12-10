@@ -1,10 +1,4 @@
-﻿using System;
-using System.Text;
-using OfficeOpenXml;
-using AODL.Document.TextDocuments;
-using AODL.Document.Content;
-using System.Xml.Linq;
-using System.Linq;
+﻿using System.Text;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
 using System.Collections.Generic;
@@ -14,12 +8,12 @@ namespace Sheetly.lib
 {
     class FileWriter
     {
-        public static void WriteCSV(SpreadsheetFile file, string filePath, string delimiter)
+        public static void WriteCSV(SpreadsheetFile file)
         {
-            StringBuilder sbOutput = new StringBuilder();
+            StringBuilder outputString = new StringBuilder();
             for (int i = 0; i < file.RowCount; i++)
-                sbOutput.AppendLine(string.Join(delimiter, file.Rows[i]));
-            File.WriteAllText(filePath, sbOutput.ToString());
+                outputString.AppendLine(string.Join(file.Delimiter, file.Rows[i]));
+            System.IO.File.WriteAllText(Path.Combine(file.FilePath, file.Name), outputString.ToString());
         }
 
         public static void WriteExcel(string filePath, string delimiter)

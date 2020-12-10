@@ -8,14 +8,16 @@ using System.Linq;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
 using System.Collections.Generic;
+using Sheetly.Models;
 
 namespace Sheetly.lib
 {
     class FileReader
     {
-        public static List<List<string>> ReadCSV(string filePath, string delimiter)
+        public static void ReadCSVIntoFile(SpreadsheetFile file, string filePath, string delimiter)
         {
             List<List<string>> rows = new List<List<string>>();
+            
             // If quotes, add the following line
             // TextFieldParser.HasFieldsEnclosedInQuotes = true;
             using (TextFieldParser parser = new TextFieldParser(filePath))
@@ -23,15 +25,16 @@ namespace Sheetly.lib
                 parser.SetDelimiters(delimiter);
                 while (!parser.EndOfData)
                 {
-                    //Processing row
                     List<string> fields = parser.ReadFields().ToList<string>();
                     rows.Add(fields);
                 }
             }
-            return rows;
+
+            file.Rows = rows.Skip(1).ToList();
+            file.Headers = rows[0];
         }
         
-        public static List<List<string>> ReadExcel(string filePath)
+        public static void ReadExcelIntoFile(string filePath)
         {
             List<List<string>> rows = new List<List<string>>();
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
@@ -55,10 +58,10 @@ namespace Sheetly.lib
                     rows.Add(row);
                 }
             }
-            return rows;
+            //return rows;
         }
 
-        public static void ReadOds(string filePath)
+        public static void ReadOdsIntoFile(string filePath)
         {
             // NOTE: Below is example code
 
@@ -82,7 +85,7 @@ namespace Sheetly.lib
             }
         }
 
-        public static void ReadNumbers(string filePath)
+        public static void ReadNumbersIntoFile(string filePath)
         {
             // TODO
         }
