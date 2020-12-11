@@ -181,8 +181,8 @@ namespace Sheetly.ViewModels
         private void SaveOutputFile()
         {
             OutputFile.FilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            OutputFile.Name = "TestOutputFile.csv";
-            FileWriter.WriteCSV(OutputFile);
+            OutputFile.Name = "TestOutputFile";
+            FileWriter.WriteExcel(OutputFile);
         }
         #endregion
     }

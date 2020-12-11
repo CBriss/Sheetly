@@ -53,12 +53,9 @@ namespace Sheetly.lib
                     {
                         row.Add(worksheet.Cells[rowNum, col].Text);
                     }
-                    // NOTE: Here, row is passed by address
-                    //        So changing row changes the entire rows list
                     rows.Add(row);
                 }
             }
-            //return rows;
         }
 
         public static void ReadOdsIntoFile(string filePath)
