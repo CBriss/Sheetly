@@ -14,15 +14,15 @@ namespace Sheetly.lib
 {
     class FileReader
     {
-        public static void ReadCSVIntoFile(SpreadsheetFile file, string filePath, string delimiter)
+        public static void ReadCSVIntoFile(SpreadsheetFile file)
         {
             List<List<string>> rows = new List<List<string>>();
             
             // If quotes, add the following line
             // TextFieldParser.HasFieldsEnclosedInQuotes = true;
-            using (TextFieldParser parser = new TextFieldParser(filePath))
+            using (TextFieldParser parser = new TextFieldParser(file.FilePath))
             {
-                parser.SetDelimiters(delimiter);
+                parser.SetDelimiters(file.Delimiter);
                 while (!parser.EndOfData)
                 {
                     List<string> fields = parser.ReadFields().ToList<string>();
@@ -34,12 +34,12 @@ namespace Sheetly.lib
             file.Headers = rows[0];
         }
         
-        public static void ReadExcelIntoFile(string filePath)
+        public static void ReadExcelIntoFile(SpreadsheetFile file)
         {
             List<List<string>> rows = new List<List<string>>();
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
 
-            using (var package = new ExcelPackage(new FileInfo(filePath)))
+            using (var package = new ExcelPackage(new FileInfo(file.FilePath)))
             {
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
                 
@@ -56,6 +56,9 @@ namespace Sheetly.lib
                     rows.Add(row);
                 }
             }
+
+            file.Rows = rows.Skip(1).ToList();
+            file.Headers = rows[0];
         }
 
         public static void ReadOdsIntoFile(string filePath)

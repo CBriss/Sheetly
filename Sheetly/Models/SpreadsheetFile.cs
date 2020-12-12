@@ -146,25 +146,25 @@ namespace Sheetly.Models
             {
                 case ValidSpreadsheetExtensions.csv:
                 case ValidSpreadsheetExtensions.txt:
-                    Console.WriteLine("txt");
-                    FileReader.ReadCSVIntoFile(this, filePath, delimiter);
+                    Debug.Print("txt");
+                    FileReader.ReadCSVIntoFile(this);
                     break;
-                case ValidSpreadsheetExtensions.xls:
                 case ValidSpreadsheetExtensions.xlsx:
-                    FileReader.ReadExcelIntoFile(filePath);
-                    Console.WriteLine("xlsx");
+                case ValidSpreadsheetExtensions.xls:
+                    Debug.Print("xlsx");
+                    FileReader.ReadExcelIntoFile(this);
                     break;
                 case ValidSpreadsheetExtensions.ods:
                 case ValidSpreadsheetExtensions.ots:
-                    Console.WriteLine("ots");
+                    Debug.Print("ots");
                     FileReader.ReadOdsIntoFile(filePath);
                     break;
                 case ValidSpreadsheetExtensions.numbers:
-                    Console.WriteLine("numbers");
+                    Debug.Print("numbers");
                     break;
             }
-            rowCount = rows.Count;
-            Headers = new List<string>(rows[0]);
+            RowCount = Rows.Count;
+            Headers = new List<string>(Rows[0]);
         }
 
         public void SetOperation(object sender)
