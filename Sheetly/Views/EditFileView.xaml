@@ -37,20 +37,7 @@
 
 
         <Label Grid.Row="1" Grid.Column="0" Content="Path" />
-        <!-- <StackPanel
-            x:Name="FileDropStackPanel"
-            Grid.Row="1"
-            Grid.Column="1"
-            AllowDrop="True"
-            Background="White"
-            Drop="FileDropStackPanel_Drop">
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Consolas" FontWeight="Bold" FontSize="15" Content="Drop File Here"/>
-        </StackPanel> -->
-
-        <!-- <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding NewFile.FilePath}" Margin="5" />-->
-        <!-- <Button Grid.Row="1" Grid.Column="2" Content="Select File Here" Command="{Binding finderUpload}" Foreground="White"
-                Background="#FF78AFFF" Padding="5" FontFamily="Consolas" FontWeight="Bold" FontSize="15" Margin="5" /> -->
-
+        
         <Label Grid.Row="2" Grid.Column="0" Content="Index Column" />
         <ComboBox  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="comboBox1"
                    ItemsSource="{Binding NewFile.Headers}"

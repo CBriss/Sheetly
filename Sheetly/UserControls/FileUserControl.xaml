@@ -16,10 +16,10 @@
                 </Style>
             </StackPanel.Resources>
 
-            <uc:EditableTextBlock Value="{Binding Name}" Width="100"/>
-            <uc:EditableTextBlock Value="{Binding RowCount}" Width="100"/>
-            <uc:EditableTextBlock Value="{Binding IndexColumn}" Width="100"/>
-            <uc:EditableTextBlock Value="{Binding Name}" Width="100"/>
+            <uc:EditableTextBlock Value="{Binding Name}" Width="200"/>
+            <uc:EditableTextBlock Value="{Binding RowCount}" Width="200"/>
+            <uc:EditableTextBlock Value="{Binding IndexColumn}" Width="200"/>
+            <uc:EditableTextBlock Value="{Binding Name}" Width="200"/>
             <Button Content="x" 
                     Command="{Binding Path=RemoveFromListCommand}"
                     Margin="15,0,0,0" Padding="5,5,5,5"

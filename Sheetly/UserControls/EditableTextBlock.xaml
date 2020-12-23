@@ -3,12 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Sheetly.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             mc:Ignorable="d"
              x:Name="Root">
-    <Grid DataContext="{Binding ElementName=Root}">
+    <Grid DataContext="{Binding ElementName=Root}" LostFocus="save_text">
         <TextBlock x:Name="label_text" Text="{Binding Value}" Visibility="Visible" PreviewMouseLeftButtonDown="edit_text"/>
-        <TextBox x:Name="editable_text" Text="{Binding Value}" Visibility="Hidden" PreviewMouseLeftButtonDown="save_text"/>
+        <TextBox x:Name="editable_text" Text="{Binding Value}" Visibility="Hidden" />
     </Grid>
 </UserControl>

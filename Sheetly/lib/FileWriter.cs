@@ -13,9 +13,10 @@ namespace Sheetly.lib
         public static void WriteCSV(SpreadsheetFile file)
         {
             StringBuilder outputString = new StringBuilder();
+            outputString.AppendLine(string.Join(file.Delimiter, file.Headers));
             for (int i = 0; i < file.RowCount; i++)
                 outputString.AppendLine(string.Join(file.Delimiter, file.Rows[i]));
-            System.IO.File.WriteAllText(Path.Combine(file.FilePath, file.Name), outputString.ToString());
+            System.IO.File.WriteAllText(Path.Combine(file.FilePath, file.Name + ".csv"), outputString.ToString());
         }
 
         public static void WriteExcel(SpreadsheetFile file)
@@ -43,16 +44,23 @@ namespace Sheetly.lib
             //workSheet.Cells[1, 1].Value = "S.No";
             //workSheet.Cells[1, 2].Value = "Id";
             //workSheet.Cells[1, 3].Value = "Name";
+            int rowIndex = 1;
+            int columnIndex = 1;
+            foreach (var value in file.Headers)
+            {    
+                workSheet.Cells[rowIndex, columnIndex].Value = value;
+                columnIndex++;
+            }
 
             // Inserting the article data into excel 
             // sheet by using the for each loop 
             // As we have values to the first row  
             // we will start with second row 
-            int rowIndex = 1;
+            rowIndex = 1;
 
             foreach (var row in file.Rows)
             {
-                int columnIndex = 1;
+                columnIndex = 1;
                 foreach (var value in row)
                 {
                     workSheet.Cells[rowIndex, columnIndex].Value = value;
@@ -70,7 +78,7 @@ namespace Sheetly.lib
             workSheet.Column(3).AutoFit();
 
             // file name with .xlsx extension  
-            string p_strPath = file.FilePath + "\\" + file.Name + ".xlsx";
+            string p_strPath = Path.Combine(file.FilePath, file.Name + ".xlsx");
 
             if (File.Exists(p_strPath))
                 File.Delete(p_strPath);

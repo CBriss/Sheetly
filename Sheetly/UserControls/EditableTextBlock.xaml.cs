@@ -27,9 +27,10 @@ namespace Sheetly.UserControls
             (this.FindName("editable_text") as TextBox).Visibility = Visibility.Visible;
         }
 
-        private void save_text(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void save_text(object sender, RoutedEventArgs e)
         {
-            
+            (this.FindName("label_text") as TextBlock).Visibility = Visibility.Visible;
+            (this.FindName("editable_text") as TextBox).Visibility = Visibility.Hidden;
         }
 
     }

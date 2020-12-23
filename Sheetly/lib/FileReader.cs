@@ -8,41 +8,35 @@ using System.Linq;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
 using System.Collections.Generic;
-using Sheetly.Models;
+using System.Diagnostics;
 
-namespace Sheetly.lib
+namespace Sheetly.Models
 {
-    class FileReader
+    public partial class SpreadsheetFile
     {
-        public static void ReadCSVIntoFile(SpreadsheetFile file)
+        public void ReadCSVIntoFile()
         {
             List<List<string>> rows = new List<List<string>>();
-            
-            // If quotes, add the following line
-            // TextFieldParser.HasFieldsEnclosedInQuotes = true;
-            using (TextFieldParser parser = new TextFieldParser(file.FilePath))
+            using (TextFieldParser parser = new TextFieldParser(FilePath))
             {
-                parser.SetDelimiters(file.Delimiter);
+                parser.SetDelimiters(Delimiter);
                 while (!parser.EndOfData)
                 {
                     List<string> fields = parser.ReadFields().ToList<string>();
                     rows.Add(fields);
                 }
             }
-
-            file.Rows = rows.Skip(1).ToList();
-            file.Headers = rows[0];
+            Rows = rows.Skip(1).ToList();
+            Headers = rows[0];
         }
         
-        public static void ReadExcelIntoFile(SpreadsheetFile file)
+        public void ReadExcelIntoFile()
         {
             List<List<string>> rows = new List<List<string>>();
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
-
-            using (var package = new ExcelPackage(new FileInfo(file.FilePath)))
+            using (var package = new ExcelPackage(new FileInfo(FilePath)))
             {
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
-                
                 var start = worksheet.Dimension.Start;
                 var end = worksheet.Dimension.End;
                 List<string> row = new List<string>();
@@ -56,12 +50,11 @@ namespace Sheetly.lib
                     rows.Add(row);
                 }
             }
-
-            file.Rows = rows.Skip(1).ToList();
-            file.Headers = rows[0];
+            Rows = rows.Skip(1).ToList();
+            Headers = rows[0];
         }
 
-        public static void ReadOdsIntoFile(string filePath)
+        public void ReadOdsIntoFile(string filePath)
         {
             // NOTE: Below is example code
 
@@ -85,7 +78,7 @@ namespace Sheetly.lib
             }
         }
 
-        public static void ReadNumbersIntoFile(string filePath)
+        public void ReadNumbersIntoFile(string filePath)
         {
             // TODO
         }

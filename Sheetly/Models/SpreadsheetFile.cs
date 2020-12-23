@@ -10,7 +10,7 @@ using System.IO;
 
 namespace Sheetly.Models
 {
-    public class SpreadsheetFile : INotifyPropertyChanged
+    public partial class SpreadsheetFile : INotifyPropertyChanged
     {
 
         #region Commands
@@ -55,8 +55,8 @@ namespace Sheetly.Models
             set { rowCount = value; }
         }
 
-        private List<String> headers;
-        public List<String> Headers
+        private List<string> headers;
+        public List<string> Headers
         {
             get => headers;
             set { headers = value; }
@@ -146,25 +146,19 @@ namespace Sheetly.Models
             {
                 case ValidSpreadsheetExtensions.csv:
                 case ValidSpreadsheetExtensions.txt:
-                    Debug.Print("txt");
-                    FileReader.ReadCSVIntoFile(this);
+                    ReadCSVIntoFile();
                     break;
                 case ValidSpreadsheetExtensions.xlsx:
                 case ValidSpreadsheetExtensions.xls:
-                    Debug.Print("xlsx");
-                    FileReader.ReadExcelIntoFile(this);
+                    ReadExcelIntoFile();
                     break;
                 case ValidSpreadsheetExtensions.ods:
                 case ValidSpreadsheetExtensions.ots:
-                    Debug.Print("ots");
-                    FileReader.ReadOdsIntoFile(filePath);
+                    ReadOdsIntoFile(filePath);
                     break;
                 case ValidSpreadsheetExtensions.numbers:
-                    Debug.Print("numbers");
                     break;
             }
-            RowCount = Rows.Count;
-            Headers = new List<string>(Rows[0]);
         }
 
         public void SetOperation(object sender)
