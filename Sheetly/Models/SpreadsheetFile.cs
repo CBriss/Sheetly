@@ -95,16 +95,11 @@ namespace Sheetly.Models
         #region Base Methods
         public SpreadsheetFile(string filePath)
         {
-            string fileExtension = Path.GetExtension(filePath).Split('.')[1];
-            if(!(Enum.IsDefined(typeof(ValidSpreadsheetExtensions), fileExtension)))
-            {
-                throw new ArgumentException(String.Format("{0} is not a correct spreadsheet format", fileExtension));
-            }
             try
             {
                 this.filePath = filePath;
-                this.name = "New File";
-                extension = (ValidSpreadsheetExtensions)Enum.Parse(typeof(ValidSpreadsheetExtensions), fileExtension);
+                extension = GetExtension(filePath);
+                name = GetFileName(filePath);
                 delimiter = ",";
                 ReadRows();
                 Connection = new FileConnection();
@@ -165,6 +160,21 @@ namespace Sheetly.Models
         {
             connection.Operation = (AllowedOperations)Enum.Parse(typeof(AllowedOperations), (string)sender);
             Debug.Print(connection.Operation.ToString());
+        }
+
+        public ValidSpreadsheetExtensions GetExtension(string filePath)
+        {
+            string fileExtension = Path.GetExtension(filePath).Split('.')[1];
+            if (!(Enum.IsDefined(typeof(ValidSpreadsheetExtensions), fileExtension)))
+                throw new ArgumentException(String.Format("{0} is not a correct spreadsheet format", fileExtension));
+            else
+                return (ValidSpreadsheetExtensions)Enum.Parse(typeof(ValidSpreadsheetExtensions), fileExtension);
+        }
+
+
+        public string GetFileName(string filePath)
+        {
+            return Path.GetFileName(filePath);
         }
         #endregion
     }

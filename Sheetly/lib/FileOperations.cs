@@ -113,5 +113,10 @@ namespace Sheetly.lib
 
             return finalList;
         }
+
+        public static List<string> ListFileOperations()
+        {
+            return Enum.GetNames(typeof(AllowedOperations)).ToList();
+        }
     }
 }

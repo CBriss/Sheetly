@@ -26,25 +26,20 @@ namespace Sheetly
 
         #region Other Methods
         private void DropNewFile(object sender, System.Windows.DragEventArgs e)
-        {
-            EditFileView editFileView = new EditFileView();
-            
+        {   
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] fileStrings = (string[])e.Data.GetData(DataFormats.FileDrop);
                 foreach (string fileString in fileStrings)
                 {
-                    editFileView.setFile(fileString);
+                    mainViewModel.AddFile(new SpreadsheetFile(fileString));
                 }
             }
-            editFileView.Show();
         }
 
         private void LoadUploadNewFileWindow(string fileName)
         {
-            EditFileView newEditFileWidow = new EditFileView();
-            newEditFileWidow.setFile(fileName);
-            newEditFileWidow.Show();
+            mainViewModel.AddFile(new SpreadsheetFile(fileName));
         }
         #endregion
     }

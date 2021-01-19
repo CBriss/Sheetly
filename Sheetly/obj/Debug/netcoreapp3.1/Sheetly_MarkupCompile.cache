@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Chris\Documents\Sheetly\Sheetly\App.xaml
-91310154534
+10793874621
 
-18-139730878
+19-997879236
 206341753954
-Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\Texts.xaml;Styles\Windows.xaml;UserControls\EditableTextBlock.xaml;UserControls\FileUserControl.xaml;Views\EditFileView.xaml;Views\MainView.xaml;
+Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\Texts.xaml;Styles\Windows.xaml;UserControls\EditableTextBlock.xaml;UserControls\FileUserControl.xaml;UserControls\OLD_FileUserControl.xaml;Views\EditFileView.xaml;Views\MainView.xaml;
 
 False
 

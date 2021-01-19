@@ -6,7 +6,22 @@
              mc:Ignorable="d"
              x:Name="Root">
     <Grid DataContext="{Binding ElementName=Root}" LostFocus="save_text">
-        <TextBlock x:Name="label_text" Text="{Binding Value}" Visibility="Visible" PreviewMouseLeftButtonDown="edit_text"/>
-        <TextBox x:Name="editable_text" Text="{Binding Value}" Visibility="Hidden" />
+        <TextBlock x:Name="label_text" Text="{Binding Value}"
+                   Visibility="Visible" PreviewMouseLeftButtonDown="edit_text"
+                   FontFamily="Constantia" FontWeight="Bold" FontSize="{Binding FontSize}"/>
+        <TextBox x:Name="editable_text" Text="{Binding Value}" Visibility="Hidden" FontFamily="Constantia" FontSize="{Binding FontSize}" />
+
+
+        <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="dropdown" Visibility="Hidden"
+                   Text="Default Index Column"
+                   Margin="5" IsReadOnly="True" BorderBrush="White" Foreground="Black">
+            <ComboBoxItem>
+                Test
+            </ComboBoxItem>
+            <ComboBoxItem>
+                Test2
+            </ComboBoxItem>
+        </ComboBox>
+        
     </Grid>
 </UserControl>

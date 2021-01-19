@@ -113,3 +113,5 @@ C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\UserControls\Ed
 C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\UserControls\EditableTextBlock.baml
 E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\UserControls\EditableTextBlock.g.cs
 E:\sheetly\Sheetly\obj\Debug\netcoreapp3.1\UserControls\EditableTextBlock.baml
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\UserControls\OLD_FileUserControl.g.cs
+C:\Users\Chris\Documents\Sheetly\Sheetly\obj\Debug\netcoreapp3.1\UserControls\OLD_FileUserControl.baml

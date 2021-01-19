@@ -46,12 +46,13 @@ namespace Sheetly.ViewModels
 
         #region Base Methods
         public MainViewModel() {
+            // Set up empty file list
             _fileList = new ObservableCollection<SpreadsheetFile>();
+
+            // Add to actions
             SpreadsheetFile.onRemoveFromList += RemoveFile;
-            SpreadsheetFile.onEditFile += OpenEditFileView;
 
-            EditFileViewModel.onNewFile += AddFile;
-
+            // Set up commands
             findNewFile = new Command(UploadNewFileFromFinderCommand);
             processFiles = new Command(ProcessFiles);
         }

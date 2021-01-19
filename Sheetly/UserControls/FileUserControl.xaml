@@ -4,62 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:uc="clr-namespace:Sheetly.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Margin="50,0,50,0">
-        <StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  Orientation="Horizontal">
-            <StackPanel.Resources>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Foreground" Value="Gray" />
-                    <Setter Property="FontSize" Value="16" />
-                    <Setter Property="Margin" Value="25 5 25 5" />
-                </Style>
-            </StackPanel.Resources>
-
-            <uc:EditableTextBlock Value="{Binding Name}" Width="200"/>
-            <uc:EditableTextBlock Value="{Binding RowCount}" Width="200"/>
-            <uc:EditableTextBlock Value="{Binding IndexColumn}" Width="200"/>
-            <uc:EditableTextBlock Value="{Binding Name}" Width="200"/>
-            <Button Content="x" 
-                    Command="{Binding Path=RemoveFromListCommand}"
-                    Margin="15,0,0,0" Padding="5,5,5,5"
-                    FontSize="22" MaxHeight="50" MinWidth="50"
-                    Background="#FFCD5E5E" Foreground="White"
-                    FontWeight="Bold"
-                    />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="25,15,0,15">
-            <Button 
-                Content="+" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50"
-                MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold"
-                Command="{Binding Path=SetNextFileOperation}"
-                CommandParameter="Add"
-                />
-            <Button
-                Content="-" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50"
-                MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold"
-                Command="{Binding Path=SetNextFileOperation}"
-                CommandParameter="Subtract"
-                />
-            <Button
-                Content="Combine" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50"
-                MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold"
-                Command="{Binding Path=SetNextFileOperation}"
-                CommandParameter="Combine"
-                />
-            <Button
-                Content="Count Common" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50"
-                MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold"
-                Command="{Binding Path=SetNextFileOperation}"
-                CommandParameter="CountCommon"
-                />
-            <Button
-                Content="Unique" Margin="15,0,0,0" Padding="5,5,5,5" FontSize="22" MaxHeight="50"
-                MinWidth="50" Background="#FF5E72CD" Foreground="White" FontWeight="Bold"
-                Command="{Binding Path=SetNextFileOperation}"
-                CommandParameter="Unique"
-                />
-
-        </StackPanel>
+             mc:Ignorable="d" >
+    <StackPanel Orientation="Vertical" Background="White">
+        <uc:EditableTextBlock Value="{Binding Name}" Width="200" FontSize="18" EditMode="Text"/>
+        <uc:EditableTextBlock Value="{Binding Delimiter}" Width="200" FontSize="18" EditMode="Text"/>
+        <uc:EditableTextBlock Value="{Binding Column}" Width="200" FontSize="18" EditMode="Dropdown"/>
     </StackPanel>
 </UserControl>
