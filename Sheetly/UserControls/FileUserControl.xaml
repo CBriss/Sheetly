@@ -6,8 +6,38 @@
              xmlns:uc="clr-namespace:Sheetly.UserControls"
              mc:Ignorable="d" >
     <StackPanel Orientation="Vertical" Background="White">
-        <uc:EditableTextBlock Value="{Binding Name}" Width="200" FontSize="18" EditMode="Text"/>
-        <uc:EditableTextBlock Value="{Binding Delimiter}" Width="200" FontSize="18" EditMode="Text"/>
-        <uc:EditableTextBlock Value="{Binding Column}" Width="200" FontSize="18" EditMode="Dropdown"/>
+        <uc:EditableTextBlock x:Name="nameField"
+                              Value="{Binding Name}"
+                              Width="200"
+                              FontSize="18"
+                              EditMode="Text"
+                              BorderBrush="#FFD1CCCC"
+                              HorizontalContentAlignment="Stretch"
+                              VerticalContentAlignment="Stretch"
+                              HorizontalAlignment="Stretch"
+                              ToolTip="Name of file"/>
+        <uc:EditableTextBlock x:Name="delimiterField"
+                              Value="{Binding Delimiter}"
+                              Width="200"
+                              FontSize="18"
+                              EditMode="Text"
+                              BorderBrush="#FFD1CCCC"
+                              BorderThickness="0,1,0,0"
+                              HorizontalContentAlignment="Stretch"
+                              ToolTip="Character used to separate CSV files"
+                              HorizontalAlignment="Stretch"
+                              Visibility="Collapsed"
+                              />
+        <uc:EditableTextBlock x:Name="columnField"
+                              Value="{Binding Column}"
+                              Width="200" FontSize="18"
+                              EditMode="Dropdown"
+                              DropdownItems="Add Subtract"
+                              BorderBrush="#FFD1CCCC"
+                              BorderThickness="0,1,0,0"
+                              FontStyle="Italic"
+                              HorizontalContentAlignment="Stretch"
+                              ToolTip="Column used to compare against other files"
+                              Visibility="Collapsed"/>
     </StackPanel>
 </UserControl>

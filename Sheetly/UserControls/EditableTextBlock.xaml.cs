@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -37,9 +38,18 @@ namespace Sheetly.UserControls
             }
         }
 
+        public object DropdownItems
+        {
+            get { return GetValue(DropdownItemsProperty); }
+            set {
+                SetValue(DropdownItemsProperty, value.ToString().Split(' '));
+            }
+        }
+
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(object), typeof(EditableTextBlock), new PropertyMetadata(""));
         public static new readonly DependencyProperty FontSizeProperty = DependencyProperty.Register("FontSize", typeof(object), typeof(EditableTextBlock), new PropertyMetadata(""));
         public static readonly DependencyProperty EditModeProperty = DependencyProperty.Register("EditMode", typeof(string), typeof(EditableTextBlock), new PropertyMetadata(""));
+        public static readonly DependencyProperty DropdownItemsProperty = DependencyProperty.Register("DropdownItems", typeof(string), typeof(EditableTextBlock), new PropertyMetadata(""));
 
         private void edit_text(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -53,7 +63,6 @@ namespace Sheetly.UserControls
                     (FindName("dropdown") as ComboBox).Visibility = Visibility.Visible;
                     break;
             }
-            
         }
 
         private void save_text(object sender, RoutedEventArgs e)
